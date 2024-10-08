@@ -1,0 +1,16 @@
+{
+    "require": {
+        "slim/slim": "^4.0",
+        "slim/psr7": "^1.7",
+        "almasaeed2010/adminlte": "^3.2",
+        "datatables/datatables": "^1.10",
+        "php-di/php-di": "^7.0",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "src/controllers/",
+            "Database\\": "src/database/"
+        }
+    }
+}
