@@ -2,6 +2,7 @@
 
 use Controllers\HomeController;
 use Controllers\DashboardController;
+use Controllers\FormController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -23,3 +24,6 @@ $app->post('/programacion/', HomeController::class . ':addProgramacion');
 $app->delete('/delete/{id}', HomeController::class . ':deleteProgramacion');
 
 $app->get('/api/total-tasks', DashboardController::class . ':getTotalTasks');
+
+$app->get('/api/select-names', [FormController::class, 'getNames']);
+$app->get('/api/select-types', [FormController::class, 'getTypes']);

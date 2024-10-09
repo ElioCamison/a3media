@@ -5,7 +5,9 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Repositories\ProgramacionRepository;
 use Repositories\DashboardRepository;
+use Repositories\FormRepository;
 use Controllers\HomeController;
+use Controllers\FormController;
 
 /**
  * Configuración del contenedor de dependencias.
@@ -96,5 +98,32 @@ return function (ContainerInterface $container) {
         $repository = $container->get(ProgramacionRepository::class);
         $logger = $container->get('logger');
         return new HomeController($repository, $logger);
+    });
+
+    /**
+     * Configura el FormRepository.
+     *
+     * Registra el FormRepository para manejar las consultas a la base de datos
+     * relacionadas con la edición y creación de formularios.
+     *
+     * @param ContainerInterface $container El contenedor de dependencias.
+     * @return FormRepository La instancia del FormRepository.
+     */
+    $container->set(FormRepository::class, function ($container) {
+        $db = $container->get('db');
+        return new FormRepository($db);
+    });
+
+    /**
+     * Configura el FormController.
+     *
+     * Registra el FormController, utilizando el FormRepository como dependencia.
+     *
+     * @param ContainerInterface $container El contenedor de dependencias.
+     * @return FormController La instancia del FormController.
+     */
+    $container->set(FormController::class, function ($container) {
+        $repository = $container->get(FormRepository::class);
+        return new FormController($repository);
     });
 };

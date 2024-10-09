@@ -13,12 +13,13 @@
 
                 <div class="form-group">
                     <label for="editNombre">Nombre</label>
-                    <div class="input-group">
+                    <select class="form-control select2 select2-hidden-accessible" id="editNombre" name="nombre" aria-hidden="true" style="width: 75%;"></select>
+                    <!--<div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" id="editNombre" name="nombre">
-                    </div>
+                        
+                    </div>-->
                 </div>
 
                 <div class="form-group">
@@ -144,3 +145,5 @@
         </div>
     </div>
 </div>
+<!-- Custom Scripts -->
+<script src="/js/form.js"></script>

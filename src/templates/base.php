@@ -7,10 +7,13 @@
     <!-- AdminLTE CSS -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
-
+    <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/collection/components/icon/icon.css" integrity="sha384-**********" crossorigin="anonymous">
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="/plugins/datatables/css/jquery.dataTables.min.css">
+    <!-- select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -220,6 +223,8 @@
     <script src="/plugins/jquery/jquery.min.js"></script>
     <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/dist/js/adminlte.js"></script>
+    <!-- Select2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
     <!-- DataTables Scripts -->
     <script src="/plugins/datatables/js/jquery.dataTables.min.js"></script>
     <!-- Charts Scripts -->
