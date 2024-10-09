@@ -19,22 +19,36 @@ composer.json         # Archivo de configuración de Composer
 ```
 
 ## Instalación
-1. Clonar el repositorio:
+
+### 1. Clonar el repositorio:
+
 ```bash
 git clone https://github.com/usuario/a3media.git
 cd a3media
 ```
 
-2. Instalar las dependencias: Asegúrate de tener Composer instalado. Luego, ejecuta:
+### 2. Instalar las dependencias: 
+Asegúrate de tener Composer instalado. Luego, ejecuta:
+
 ```bash
 composer install
 ```
 
-3. Configurar las variables de entorno: Renombra el archivo .env.example a .env y configura las variables necesarias (como las credenciales de la base de datos).
+### 3. Configurar las variables de entorno: 
+Renombra el archivo .env.example a .env y configura las variables necesarias (como las credenciales de la base de datos).
 
-4. Configurar la base de datos: Importa el esquema de la base de datos y ajusta los detalles de conexión en .env.
+### 4. Configurar la base de datos:
+Importa el esquema de la base de datos y ajusta los detalles de conexión en `.env`. 
 
-5. Ejecutar el servidor de desarrollo: Puedes utilizar el servidor integrado de PHP para pruebas locales:
+> **Nota:** Asegúrate de que la tabla de la base de datos incluya un campo `ID`. Si la tabla no tiene un campo `ID`, puedes agregarlo ejecutando la siguiente consulta SQL:
+
+```sql
+ALTER TABLE nombre_de_tu_tabla ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY;
+``` 
+
+### 5. Ejecutar el servidor de desarrollo: 
+Puedes utilizar el servidor integrado de PHP para pruebas locales:
+
 ```bash
 php -S 127.0.0.1:8000 -t public
 ```
@@ -49,12 +63,12 @@ La aplicación ofrece los siguientes endpoints:
 - **POST** `/programacion/{id}`: Actualizar un registro de programación existente.
 - **DELETE** `/programacion/{id}`: Eliminar un registro de programación.
 
-Ejemplo de Petición
+### Ejemplo de Petición
 ```bash
 curl -X GET http://127.0.0.1:8000/programacion-data
 ```
 
-Configuración de Dependencias
+## Configuración de Dependencias
 
 Las dependencias se configuran en el archivo src/config/dependencies.php, que utiliza el contenedor de Slim para inyectar clases y configuraciones, manteniendo el index.php limpio y modular.
 
