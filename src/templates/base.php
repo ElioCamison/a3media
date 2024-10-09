@@ -65,7 +65,7 @@
                         <div class="col-lg-3 col-6">
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>100</h3>
+                                    <h3 id="total-tasks"></h3>
                                     <p>Total de Tareas</p>
                                 </div>
                                 <div class="icon">
@@ -227,6 +227,7 @@
     <!-- Custom Scripts -->
     <script type="module" src="/js/app.js"></script>
     <script src="/js/charts.js"></script>
+    <script src="/js/dashboard.js"></script>
 
 </body>
 </html>
