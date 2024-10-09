@@ -33,6 +33,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
+                <img src="/img/atresmedia_tech_transparente.png" alt="a3media Tech Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">A3media</span>
             </a>
             <!-- Sidebar -->
@@ -113,7 +114,6 @@
                                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-                        <!-- Repite el mismo bloque para cada tarjeta -->
                     </div>
                     <!-- Gráficas -->
                     <div class="row">
@@ -173,8 +173,8 @@
 
                     <!-- Botón para agregar una nueva programación -->
                     <div class="d-flex justify-content-end mb-3">
-                        <a href="#" class="btn btn-success">
-                            <i class="fas fa-plus"></i> Agregar Nueva Programación
+                        <a href="#" class="btn btn-info">
+                            <i class="fas fa-plus"></i> Agregar Programación
                         </a>
                     </div>
 
