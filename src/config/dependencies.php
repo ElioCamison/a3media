@@ -1,6 +1,8 @@
 <?php
 
 use Psr\Container\ContainerInterface;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 use Repositories\ProgramacionRepository;
 use Controllers\HomeController;
 
@@ -26,6 +28,34 @@ return function (ContainerInterface $container) {
     });
 
     /**
+     * Configura el servicio de logging.
+     *
+     * Registra un servicio 'logger' que devuelve una instancia de Logger.
+     */
+    $container->set('logger', function() {
+        $logDirectory = __DIR__ . '/../logs';
+        $isLogDirectoryMissing = !is_dir($logDirectory);
+    
+        if ($isLogDirectoryMissing) {
+            mkdir($logDirectory, 0755, true);
+        }
+
+        $logger = new Logger('a3media');
+
+        $logLevels = [
+            'dev' => Logger::DEBUG,
+            'sta' => Logger::INFO,
+            'PRO' => Logger::WARNING,
+        ];
+        
+        $logLevel = $logLevels[$_ENV['APP_ENV']] ?? Logger::WARNING;
+
+        $file_handler = new StreamHandler($logDirectory . '/app.log', $logLevel);
+        $logger->pushHandler($file_handler);
+        return $logger;
+    });
+
+    /**
      * Configura el servicio de repositorio de programación.
      *
      * Registra el repositorio de programación para gestionar operaciones CRUD
@@ -42,13 +72,14 @@ return function (ContainerInterface $container) {
     /**
      * Configura el servicio del controlador Home.
      *
-     * Registra el controlador Home, utilizando el repositorio de programación como dependencia.
+     * Registra el controlador Home, utilizando el repositorio de programación y el logger como dependencias.
      *
      * @param ContainerInterface $container El contenedor de dependencias.
      * @return HomeController La instancia del controlador Home.
      */
     $container->set(HomeController::class, function ($container) {
         $repository = $container->get(ProgramacionRepository::class);
-        return new HomeController($repository);
+        $logger = $container->get('logger');
+        return new HomeController($repository, $logger);
     });
 };

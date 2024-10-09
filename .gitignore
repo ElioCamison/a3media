@@ -4,3 +4,4 @@ composer.lock
 .vscode
 public/dist/
 public/plugins/
+logs/
