@@ -225,7 +225,7 @@
     <!-- Charts Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Custom Scripts -->
-    <script src="/js/app.js"></script>
+    <script type="module" src="/js/app.js"></script>
     <script src="/js/charts.js"></script>
 
 </body>
