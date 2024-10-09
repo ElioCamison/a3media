@@ -4,6 +4,7 @@ use Psr\Container\ContainerInterface;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 use Repositories\ProgramacionRepository;
+use Repositories\DashboardRepository;
 use Controllers\HomeController;
 
 /**
@@ -67,6 +68,20 @@ return function (ContainerInterface $container) {
     $container->set(ProgramacionRepository::class, function ($container) {
         $db = $container->get('db');
         return new ProgramacionRepository($db);
+    });
+
+    /**
+     * Configura el repositorio del dashboard.
+     *
+     * Registra el DashboardRepository para manejar las consultas a la base de datos 
+     * relacionadas con los datos del dashboard. Utiliza el servicio 'db' para la conexión.
+     *
+     * @param ContainerInterface $container El contenedor de dependencias.
+     * @return DashboardRepository La instancia del repositorio del dashboard.
+     */
+    $container->set(DashboardRepository::class, function ($container) {
+        $db = $container->get('db');
+        return new DashboardRepository($db);
     });
 
     /**
