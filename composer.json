@@ -10,7 +10,9 @@
     "autoload": {
         "psr-4": {
             "Controllers\\": "src/controllers/",
-            "Database\\": "src/database/"
+            "Database\\": "src/database/",
+            "Utils\\": "src/utils/",
+            "Repositories\\": "src/database/"
         }
     }
 }

@@ -9,14 +9,10 @@ $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
 $container = new Container();
-
-$container->set('db', function () {
-    $database = new \Database\Database();
-    return $database->getConnection();
-});
-
 AppFactory::setContainer($container);
 $app = AppFactory::create();
+
+(require __DIR__ . '/../src/config/dependencies.php')($container);
 
 $app->addErrorMiddleware(true, true, true);
 
