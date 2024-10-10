@@ -25,7 +25,6 @@ export const populateEditForm = (data) => {
     $('#editSh').val(data.sh);
     $('#editActivo').val(data.activo === 'S' ? 'S' : 'N');
 
-    // Marcar los días de la semana
     $('input[name="dia"]').prop('checked', false);
     if (data.dia) {
         $('input[name="dia"]').filter(`[value="${data.dia}"]`).prop('checked', true);

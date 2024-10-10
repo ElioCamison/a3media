@@ -13,6 +13,9 @@ El proyecto sigue una estructura organizada, dividiendo la lógica en módulos y
   /database           # Lógica de acceso a datos y conexión a la base de datos
   /templates          # Plantillas para la interfaz de usuario
   /utils              # Clases auxiliares y utilidades (ej. ResponseBuilder.php)
+/tests                # Tests unitarios y funcionales
+  /Functional         # Tests funcionales para verificar la integración de componentes
+  /Unit               # Tests unitarios para validar componentes individuales
 /vendor               # Dependencias instaladas por Composer
 .env                  # Variables de entorno
 composer.json         # Archivo de configuración de Composer
@@ -52,6 +55,49 @@ Puedes utilizar el servidor integrado de PHP para pruebas locales:
 ```bash
 php -S 127.0.0.1:8000 -t public
 ```
+
+## Testing
+### Configuración del Entorno de Pruebas
+Para realizar las pruebas, primero asegúrate de configurar el archivo .env.testing en el directorio raíz del proyecto. Este archivo debe contener la configuración necesaria para el entorno de pruebas. Aquí tienes un ejemplo de los valores que puedes utilizar:
+
+```plaintext
+# environment
+APP_ENV=testing
+
+# bdd (Base de Datos)
+DB_HOST="localhost"
+DB_NAME="nombre_pruebas"
+DB_USER="usuario_pruebas"
+DB_PASS="contraseña_pruebas"
+```
+### Ejecución de Pruebas
+
+#### Pruebas Unitarias
+Las pruebas unitarias validan el comportamiento de componentes individuales del código, generalmente sin depender de la base de datos ni otros sistemas externos. Para ejecutar solo los tests unitarios, usa el siguiente comando:
+
+```bash
+./vendor/bin/phpunit tests/Unit/
+```
+
+#### Pruebas Funcionales
+Las pruebas funcionales verifican que las diferentes partes de la aplicación funcionan correctamente en conjunto y generalmente requieren una base de datos o servicios externos. Para ejecutar solo los tests funcionales, usa:
+
+```bash
+./vendor/bin/phpunit tests/Functional/
+```
+
+#### Ejecutar Todas las Pruebas
+Si quieres ejecutar todos los tests (unitarios y funcionales), puedes hacerlo con:
+
+```bash
+./vendor/bin/phpunit tests/
+```
+
+> **Nota de Pruebas:**
+> 
+> - Las pruebas unitarias se ejecutan de manera aislada y no deberían necesitar conexión a la base de datos.
+> - Las pruebas funcionales pueden requerir una base de datos configurada específicamente para el entorno de pruebas.
+> - Asegúrate de utilizar una base de datos de pruebas separada para evitar conflictos con datos de producción.
 
 ## Uso
 ### Endpoints

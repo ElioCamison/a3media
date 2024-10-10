@@ -15,5 +15,8 @@
             "Utils\\": "src/utils/",
             "Repositories\\": "src/database/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
     }
 }
