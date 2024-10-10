@@ -59,6 +59,9 @@ class ProgramacionRepository {
      * @return bool True si el registro fue creado exitosamente, false en caso contrario.
      */
     public function create(array $params): bool {
+        var_dump("--------------------------------------------------");
+        var_dump($params);
+        var_dump("--------------------------------------------------");
         $stmt = $this->db->prepare("INSERT INTO nueva_programacion 
             (nombre, tipo, regla, cuando, programacion, dia, hora, sh, activo) 
             VALUES 

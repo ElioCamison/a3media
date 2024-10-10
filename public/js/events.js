@@ -11,13 +11,15 @@ const handleFormSubmit = (event) => {
     event.preventDefault();
     const url = '/programacion/' + $('#editId').val();
     const data = $('#editForm').serialize();
+    debugger;
     submitForm(url, 'POST', data, "Registro actualizado con éxito.");
 };
 
 const handleCreateSubmit = (event) => {
     event.preventDefault();
-    const url = '/programacion';
+    const url = '/programacion/';
     const data = $('#newCreateForm').serialize();
+    debugger;
     submitForm(url, 'POST', data, "Registro creado con éxito.");
 };
 

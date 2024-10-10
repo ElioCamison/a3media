@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="newCreateForm" method="POST" action="/programacion">
+                <form id="newCreateForm">
                     <div class="form-group">
                         <label for="createNombre">Nombre</label>
                         <input type="text" class="form-control" id="createNombre" name="nombre" required>
