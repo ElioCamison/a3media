@@ -1,54 +1,64 @@
 
 function populateNames() {
-    $('#editNombre').select2({
-      ajax: {
-        url: '/api/select-names',
-        dataType: 'json',
-        delay: 250,
-        data: function (params) {
-            return {
-                term: params.term
-            };
-        },
-        processResults: function (data) {
-          return {
-            results: data.options.map(function(option) {
-              return {
-                id: option.nombre,
-                text: option.nombre
-              };
-            })
-          };
-        },
-        error: function (xhr, status, error) {
-          console.error("Error en la carga ajax:", error);
-        }
-      },
-      width: 'resolve',
-      placeholder: 'Seleccione un nombre',
-      allowClear: true
+    const element = document.getElementById('editNombre');
+    const choices = new Choices(element, {
+        placeholderValue: 'Seleccione un nombre',
+        searchEnabled: true,
+        noResultsText: 'No se encontraron resultados',
+        itemSelectText: 'Seleccionar',
+        removeItemButton: true
     });
+
+    fetch('/api/select-names')
+        .then(response => response.json())
+        .then(data => {
+            choices.setChoices(data.options, 'nombre', 'nombre', true);
+        })
+        .catch(error => console.error('Error fetching names:', error));
 }
 
-
 function populateTypes() {
+    const element = document.getElementById('editTipo');
+    const choices = new Choices(element, {
+        placeholderValue: 'Seleccione un tipo',
+        searchEnabled: true,
+        noResultsText: 'No se encontraron resultados',
+        itemSelectText: 'Seleccionar',
+        removeItemButton: true
+    });
+
     fetch('/api/select-types')
         .then(response => response.json())
         .then(data => {
-            const editTipo = $('#editTipo');
-            editTipo.empty();
+            const options = data.options.map(option => ({
+                value: option.tipo,
+                label: option.tipo
+            }));
 
-            data.options.forEach(option => {
-                const newOption = new Option(option.type, option.type, false, false);
-                editTipo.append(newOption);
-            });
-
-            editTipo.select2();
+            choices.setChoices(options, 'value', 'label', true);
         })
         .catch(error => console.error('Error fetching types:', error));
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
     populateNames();
     populateTypes();
+
+    const diaElement = document.getElementById('editDia');
+    const choices = new Choices(diaElement, {
+      removeItemButton: true,
+      placeholderValue: 'Seleccione los días',
+      noResultsText: 'No se encontraron resultados',
+      itemSelectText: 'Presione para seleccionar',
+    });
+
+    const activoToggle = document.getElementById('editActivo');
+    const activoWarning = document.getElementById('activoWarning');
+
+    activoToggle.addEventListener('change', function() {
+        activoWarning.style.display = activoToggle.checked ? 'none' : 'block';
+    });
+      
+    
 });

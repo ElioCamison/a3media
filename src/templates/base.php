@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/collection/components/icon/icon.css" integrity="sha384-**********" crossorigin="anonymous">
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="/plugins/datatables/css/jquery.dataTables.min.css">
-    <!-- select2 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <!-- Choice.js (atpc Select2) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -173,7 +173,7 @@
 
                     <!-- Botón para agregar una nueva programación -->
                     <div class="d-flex justify-content-end mb-3">
-                        <a href="#" class="btn btn-info">
+                        <a href="#" class="btn btn-success">
                             <i class="fas fa-plus"></i> Agregar Programación
                         </a>
                     </div>
@@ -223,8 +223,8 @@
     <script src="/plugins/jquery/jquery.min.js"></script>
     <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/dist/js/adminlte.js"></script>
-    <!-- Select2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
+    <!-- Choices.js -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <!-- DataTables Scripts -->
     <script src="/plugins/datatables/js/jquery.dataTables.min.js"></script>
     <!-- Charts Scripts -->
