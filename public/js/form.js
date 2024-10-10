@@ -30,16 +30,25 @@ function populateTypes() {
     fetch('/api/select-types')
         .then(response => response.json())
         .then(data => {
-            const options = data.options.map(option => ({
-                value: option.tipo,
-                label: option.tipo
-            }));
-
-            choices.setChoices(options, 'value', 'label', true);
+            if (data && Array.isArray(data.options)) {
+                // Filtra valores nulos o inválidos
+                const validOptions = data.options.filter(option => option.tipo && typeof option.tipo === 'string');
+                choices.clearChoices();
+                choices.setChoices(
+                    validOptions.map(option => ({
+                        value: option.tipo,
+                        label: option.tipo
+                    })),
+                    'value',
+                    'label',
+                    false
+                );
+            } else {
+                console.error('No se encontraron opciones válidas para los tipos.');
+            }
         })
         .catch(error => console.error('Error fetching types:', error));
 }
-
 
 document.addEventListener('DOMContentLoaded', function() {
     populateNames();

@@ -15,7 +15,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="editNombre">Nombre</label>
-                                    <select class="form-control select2" id="editNombre" name="nombre" style="width: 100%;"></select>
+                                    <select class="form-control" id="editNombre" name="nombre" style="width: 100%;"></select>
                                 </div>                                
 
                                 <div class="form-group">
@@ -54,7 +54,7 @@
 
                                 <div class="form-group">
                                     <label for="editTipo">Tipo</label>
-                                    <select class="form-control select2" id="editTipo" name="tipo" style="width: 100%;"></select>
+                                    <select class="form-control" id="editTipo" name="tipo" style="width: 100%;"></select>
                                 </div>
 
                                 <div class="form-group">
